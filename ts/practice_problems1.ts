@@ -100,3 +100,66 @@ let product4:product={
 
 
 console.log(productPrice(product1,product2,product3,product4));
+
+
+// Q4 define a union type for a vechile that can either be a car or bike with difff properties , write a function  to log details based on the vechile type
+
+
+type carData={
+
+    type:'car',
+    make:string,
+    model:string,
+    year:number,
+}
+type bike={
+
+    type:'bike',
+    brand:string,
+    
+    cc:number,
+}
+
+type Vechiles=bike|carData
+
+function getVechile(vechile:Vechiles){
+
+    if(vechile.type=='car'){
+
+        console.log(vechile);
+        
+    }
+
+    else{
+
+
+        console.log(vechile);
+        
+    }
+
+
+
+}
+
+let myCar:Vechiles={
+
+    type:"car",
+    make:"sdh",
+    model:"228",
+    year:2025,
+}
+let mybike:Vechiles={
+
+    type:"bike",
+    brand:"honda",
+    
+    cc:47846
+   
+}
+
+getVechile(myCar)
+getVechile(mybike)
+
+
+
+
