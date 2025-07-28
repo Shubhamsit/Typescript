@@ -74,6 +74,222 @@ let usr:UserRecord3={
 
 // 4. Pick -> ye ek naya type create karta h jaha pe ye ek subset of jitne bhi properties hamne define kiya hai uska ek subset le leta hai 
 
+type UserInfo=Pick<UserRecord,'name'|'email'>;
+
+const userInfo:UserInfo={
+
+
+
+    name:"shubham",
+    email:"gjsahd@gmail",
+  //  age:10  // will not let us use it here 
+}
+
+//----------------------------------------------------------------------------
+
+// omit
+
+
+type UserWithoutEmail=Omit<UserRecord,'email'>;
+
+const userOmitInfo:UserWithoutEmail={
+
+
+
+    name:"shubham",
+  //  email:"gjsahd@gmail",  // here we cant use email as it is ommited
+    age:10  
+}
+
+
+
+//-------------------------------------------------------------------------------------------
+
+// Record
+
+type UserRecordInfo= Record<string,number>;
+
+const userRecordInfo:UserRecordInfo={
+
+  //  name:"shubham", // it will shoow error as we have defined it should be onlu assigned nmmber
+
+  name:0 // it will take 
+
+}
+
+
+
+type Role='admin'|'user'|'guest'
+
+const userRole:Record<Role,string>={
+
+    admin:"shubham",
+    user:"priya",
+    guest:"sujal"
+
+
+}
+
+
+console.log(userRole.admin,"bhai admin");
+
+
+
+//--------------------------------------------------------------------------------------------
+
+// Exclude(ye use hota h ek certain type ko remove karne ke liye union types ke andar se)
+
+type Stat ='success'|'error'|'loading';
+
+type ExcludeError=Exclude<Stat,'error'>
+
+const stat1:ExcludeError='success'
+const stat2:ExcludeError='loading'
+// const stat3:ExcludeError='error' // will give error as error is excluded not meant to be used here
+
+//-----------------------------------------------------------------------------------------------
+
+
+///Extract
+
+
+type Stat2 ='success'|'error'|'loading';
+
+type ExtractError=Extract<Stat2,'error'|'loading'>;
+
+const extractError:ExtractError='error'
+const extractError2:ExtractError='loading'
+// const extractError3:ExtractError='success' // will give error 
+
+
+
+//------------------------------------------------------------------------------------------
+
+// NonNullable
+
+type MayBeUser=string| null|undefined
+
+type UserNull=NonNullable<MayBeUser>;
+
+// const userNull:UserNull=undefined  // give error undefined ya nulll nhi hona chahiye
+// const userNull:UserNull=null   // give error 
+
+
+
+//-----------------------------------------------------------------------------------------------
+
+
+// ReturnType
+
+function getType(){
+
+
+
+
+    return {name:"shubham",age:21};
+}
+
+
+type UserReturnType=ReturnType<typeof getType>;  // yaha pe ye getType fn ke return type ko leke ek type bana leta hai
+
+const userType:UserReturnType={name:"shubham",age:28};
+
+
+
+
+//-----------------------------------------------------------------------------------------
+
+// Parameters-> ye use hota hai extract karne ke liye types of functions parameter as a tuple 
+
+
+function updateUserData(name:string,age:number){
+
+
+    console.log(`name:${name} and age:${age}`);
+
+
+}
+
+
+type updateUserParams=Parameters<typeof updateUserData >;
+
+const params:updateUserParams=["shubham",20];  // ye parameter ke type se type bana raha 
+
+
+//------------------------------------------------------------------------------------------
+
+// constructor parameter
+
+class Userdata{
+
+
+    constructor(public name:string,public age:number){
+
+
+
+    }
+
+}
+
+
+type UserConstructorParams=ConstructorParameters<typeof Userdata>;
+
+
+const userParams: UserConstructorParams=["shubham",21];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

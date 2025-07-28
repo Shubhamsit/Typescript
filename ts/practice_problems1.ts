@@ -28,8 +28,6 @@ function makeString(myuser:user):string{
 
     return `the user is ${myuser.name} and phone no is ${myuser.phone} and age is ${myuser.age} and is ${myuser.isLoggedIn?"loggedin":"not loggedin"}`
 
-
-
 }
 
 let user1:user={
